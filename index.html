@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>my personalized curriculum</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <script>
+    var rows = [];
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        var myArr = JSON.parse(this.response);
+        rows = myArr;
+        var t1 = $('#table1 > tbody');
+        var row1 = myArr[0];
+        var row2 = myArr[1];
+        var row3 = myArr[2];
+        var trow1 = '<tr><td>' + row1["Session"] + '</td><td>' + row1["Skill"] + '</td><td><a href=\"' + row1["Challenge"] + '\">' + row1["linktitle"] + '</a></td><td>' + row1["Status"] + '</td><td>' + row1["Notes"] + '</td></tr>';
+        var trow2 = '<tr><td>' + row2["Session"] + '</td><td>' + row2["Skill"] + '</td><td><a href=\"' + row2["Challenge"] + '\">' + row2["linktitle"] + '</a></td><td>' + row2["Status"] + '</td><td>' + row2["Notes"] + '</td></tr>';
+        var trow3 = '<tr><td>' + row3["Session"] + '</td><td>' + row3["Skill"] + '</td><td><a href=\"' + row3["Challenge"] + '\">' + row3["linktitle"] + '</a></td><td>' + row3["Status"] + '</td><td>' + row3["Notes"] + '</td></tr>';
+        t1.append(trow1);
+        t1.append(trow2);
+        t1.append(trow3);
+        // the second table
+        var t2 = $('#table2 > tbody');
+        var row4 = myArr[3];
+        var row5 = myArr[4];
+        var row6 = myArr[5];
+        var trow4 = '<tr><td>' + row4["Session"] + '</td><td>' + row4["Skill"] + '</td><td><a href=\"' + row4["Challenge"] + '\">' + row4["linktitle"] + '</a></td><td>' + row4["Status"] + '</td><td>' + row4["Notes"] + '</td></tr>';
+        var trow5 = '<tr><td>' + row5["Session"] + '</td><td>' + row5["Skill"] + '</td><td><a href=\"' + row5["Challenge"] + '\">' + row5["linktitle"] + '</a></td><td>' + row5["Status"] + '</td><td>' + row5["Notes"] + '</td></tr>';
+        var trow6 = '<tr><td>' + row6["Session"] + '</td><td>' + row6["Skill"] + '</td><td><a href=\"' + row6["Challenge"] + '\">' + row6["linktitle"] + '</a></td><td>' + row6["Status"] + '</td><td>' + row6["Notes"] + '</td></tr>';
+        t2.append(trow4);
+        t2.append(trow5);
+        t2.append(trow6);
+        // the third table
+        var t3 = $('#table3 > tbody');
+        var row7 = myArr[6];
+        var row8 = myArr[7];
+        var row9 = myArr[8];
+        var trow7 = '<tr><td>' + row7["Session"] + '</td><td>' + row7["Skill"] + '</td><td><a href=\"' + row7["Challenge"] + '\">' + row7["linktitle"] + '</a></td><td>' + row7["Status"] + '</td><td>' + row7["Notes"] + '</td></tr>';
+        var trow8 = '<tr><td>' + row8["Session"] + '</td><td>' + row8["Skill"] + '</td><td><a href=\"' + row8["Challenge"] + '\">' + row8["linktitle"] + '</a></td><td>' + row8["Status"] + '</td><td>' + row8["Notes"] + '</td></tr>';
+        var trow9 = '<tr><td>' + row9["Session"] + '</td><td>' + row9["Skill"] + '</td><td><a href=\"' + row9["Challenge"] + '\">' + row9["linktitle"] + '</a></td><td>' + row9["Status"] + '</td><td>' + row9["Notes"] + '</td></tr>';
+        t3.append(trow7);
+        t3.append(trow8);
+        t3.append(trow9);
+      }
+    };
+    // Due to how Cloudfront caches files, we use the direct S3 URL to avoid refresh issues
+    // if you copy this, change the id 88533e92-4806-4b8a-b7ff-254768be02c7 to your own userId
+    // you can see what your id is by looking at the URL on the profile page
+    xmlhttp.open("GET", "https://s3.amazonaws.com/code.giild.net/88533e92-4806-4b8a-b7ff-254768be02c7/My_personalized_curriculum/data/curriculum2.json", true);
+    xmlhttp.send(); 
+    </script>
+  
+  <div style="margin-botton: 20px;">
+  <h1>My curriculum</h1>
+  <a href="hello.html">Example using for loop</a><p>
+  </div>
+  <div class="curriculumContainer">
+  <table class="curriculum" id="table1">
+    <tr>
+      <th>Session</th>
+      <th>Skill</th>
+      <th>Challenge</th>
+      <th>Status</th>
+      <th>Notes</th>
+    </tr>
+  </table>
+  <div style="margin-botton: 10px; margin-top: 10px;"></div>
+  <table class="curriculum" id="table2">
+    <tr>
+      <th>Session</th>
+      <th>Skill</th>
+      <th>Challenge</th>
+      <th>Status</th>
+      <th>Notes</th>
+    </tr>
+  </table>
+  <div style="margin-botton: 10px; margin-top: 10px;"></div>
+  <table class="curriculum" id="table3">
+    <tr>
+      <th>Session</th>
+      <th>Skill</th>
+      <th>Challenge</th>
+      <th>Status</th>
+      <th>Notes</th>
+    </tr>
+  </table>
+ </div>
+ </body>
+</html>

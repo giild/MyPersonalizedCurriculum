@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>my personalized curriculum</title>
+    <link rel="stylesheet" href="style2.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <script>
+    var rows = [];
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        var myArr = JSON.parse(this.response);
+        rows = myArr;
+        var t1 = $('#table1 > tbody');
+        for (i=0; i < 3; i++) {
+          var row = myArr[i];
+          var trow = '<tr><td>' + row["Session"] + '</td><td>' + row["Skill"] + '</td><td><a href=\"' + row["Challenge"] + '\">' + row["linktitle"] + '</a></td><td>' + row["Status"] + '</td><td>' + row["Notes"] + '</td></tr>';
+          t1.append(trow);
+        }
+        // the second table
+        var t2 = $('#table2 > tbody');
+        for (i=3; i < 6; i++) {
+          var row = myArr[i];
+          var trow = '<tr><td>' + row["Session"] + '</td><td>' + row["Skill"] + '</td><td><a href=\"' + row["Challenge"] + '\">' + row["linktitle"] + '</a></td><td>' + row["Status"] + '</td><td>' + row["Notes"] + '</td></tr>';
+          t2.append(trow);
+        }
+        // the third table
+        var t3 = $('#table3 > tbody');
+        for (i=6; i < 9; i++) {
+          var row = myArr[i];
+          var trow = '<tr><td>' + row["Session"] + '</td><td>' + row["Skill"] + '</td><td><a href=\"' + row["Challenge"] + '\">' + row["linktitle"] + '</a></td><td>' + row["Status"] + '</td><td>' + row["Notes"] + '</td></tr>';
+          t3.append(trow);
+        }
+      }
+    };
+    // Due to how Cloudfront caches files, we use the direct S3 URL to avoid refresh issues
+    // if you copy this, change the id 88533e92-4806-4b8a-b7ff-254768be02c7 to your own userId
+    // you can see what your id is by looking at the URL on the profile page
+    xmlhttp.open("GET", "https://s3.amazonaws.com/code.giild.net/88533e92-4806-4b8a-b7ff-254768be02c7/My_personalized_curriculum/data/curriculum2.json", true);
+    xmlhttp.send(); 
+    </script>
+  
+  <div style="margin-botton: 20px;">
+  <h1>My curriculum</h1>
+  </div>
+  <div class="rows">
+  <table class="curriculum" id="table1">
+    <tr>
+      <th style="background-color: #E3F8E3">Session</th>
+      <th style="background-color: #E3F8E3">Skill</th>
+      <th style="background-color: #E3F8E3">Challenge</th>
+      <th style="background-color: #E3F8E3">Status</th>
+      <th style="background-color: #E3F8E3">Notes</th>
+    </tr>
+  </table>
+  <div style="margin-botton: 10px; margin-top: 10px;"></div>
+  <table class="curriculum" id="table2">
+    <tr class="session2">
+      <th style="background-color: lightblue">Session</th>
+      <th style="background-color: lightblue">Skill</th>
+      <th style="background-color: lightblue">Challenge</th>
+      <th style="background-color: lightblue">Status</th>
+      <th style="background-color: lightblue">Notes</th>
+    </tr>
+  </table>
+  <div style="margin-botton: 10px; margin-top: 10px;"></div>
+  <table class="curriculum" id="table3">
+    <tr class="session3">
+      <th style="background-color: olive">Session</th>
+      <th style="background-color: olive">Skill</th>
+      <th style="background-color: olive">Challenge</th>
+      <th style="background-color: olive">Status</th>
+      <th style="background-color: olive">Notes</th>
+    </tr>
+  </table>
+ </div>
+ </body>
+</html>
